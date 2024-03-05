@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: mysqldb-replicaset
+  namespace: sqldb
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysqldb
+        image: 128140924817.dkr.ecr.us-east-1.amazonaws.com/test:db_v1
+        envFrom:
+        - secretRef:
+            name: mysqldb-secret
+        ports:
+        - containerPort: 3306
+
