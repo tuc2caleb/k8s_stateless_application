@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: employeeappv2-service
+  name: employeeapp-service
   namespace: webapp
 spec:
-  type: NodePort
   selector:
     app: employees
-    version: v2
+    version: v1
   ports:
     - protocol: TCP
       port: 8080
       targetPort: 8080
-      nodePort: 30001
+       
 
