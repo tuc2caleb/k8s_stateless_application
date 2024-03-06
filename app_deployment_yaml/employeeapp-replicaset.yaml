@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: employeeapp-replicaset
+  namespace: webapp
+  labels:
+    app: employees
+    version: v1
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: employees
+        version: v1
+    spec:
+      containers:
+      - name: employeeapp
+        image: 128140924817.dkr.ecr.us-east-1.amazonaws.com/test:v1
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: employeeapp-secret
+

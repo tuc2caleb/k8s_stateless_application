@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: employeeapp
+  namespace: webapp
+spec:
+  containers:
+  - name: employeeapp
+    image: 128140924817.dkr.ecr.us-east-1.amazonaws.com/test:v1
+    ports:
+    - containerPort: 8080
+    envFrom:
+    - secretRef:
+        name: employeeapp-secret
+

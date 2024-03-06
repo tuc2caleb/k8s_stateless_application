@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysqldb
+  namespace: sqldb
+  labels:
+    app: mysql
+spec:
+  containers:
+  - name: mysqldb
+    image: 128140924817.dkr.ecr.us-east-1.amazonaws.com/test:db_v1
+    envFrom:
+    - secretRef:
+        name: mysqldb-secret
+    ports:
+    - containerPort: 3306
+
