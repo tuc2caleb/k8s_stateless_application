@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: employeeapp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2  
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /v1(/|$)(.*)
+        backend:
+          service:
+            name: employeeapp-service
+            port:
+              number: 8080
+      - pathType: Prefix
+        path: /v2(/|$)(.*)
+        backend:
+          service:
+            name: employeeappv2-service
+            port:
+              number: 8080
+
