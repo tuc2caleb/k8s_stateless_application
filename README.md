@@ -1,1 +1,1 @@
-# k8s_stateless_application
+## Implementing Continuous Delivery with Kubernetes: Deploying, Exposing, and Updating Containerized Stateless Applications
